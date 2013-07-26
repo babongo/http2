@@ -28,11 +28,11 @@
         </ul>
       </header>
       <section>
-        <h3>
-<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h3>
+        <h1>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h1>
 
-<h4>
-<a name="overall" class="anchor" href="#overall"><span class="octicon octicon-link"></span></a>Overall</h4>
+<h2>
+<a name="overall" class="anchor" href="#overall"><span class="octicon octicon-link"></span></a>Overall</h2>
 
 <ol>
 <li>Be able to run usual HTTP transactions using HTTP/2.0 syntax.</li>
@@ -41,8 +41,8 @@
 <li>Be able to test the software base extensively and systematically (unit, regression, integration).</li>
 <li>Make it easy for new developers to understand the overall architecture and code structure, and be able to contribute as quickly and as effectively as possible.</li>
 <li>Make it easy for users of the software to plug their own implementations for non-core components (e.g. caching and discovery functionality).</li>
-</ol><h4>
-<a name="client" class="anchor" href="#client"><span class="octicon octicon-link"></span></a>Client</h4>
+</ol><h2>
+<a name="client" class="anchor" href="#client"><span class="octicon octicon-link"></span></a>Client</h2>
 
 <ol>
 <li>Be able to negotiate a HTTP/2.0 connection with a server for both \ttt{http} and \ttt{https} URIs.</li>
@@ -50,8 +50,8 @@
 <li>Establish and run a successful connection according to spec.</li>
 <li>Handle connection errors according to spec.</li>
 <li>Be able to re-use previously retrieved resources for new requests (cache).</li>
-</ol><h4>
-<a name="server" class="anchor" href="#server"><span class="octicon octicon-link"></span></a>Server</h4>
+</ol><h2>
+<a name="server" class="anchor" href="#server"><span class="octicon octicon-link"></span></a>Server</h2>
 
 <ol>
 <li>Be able to instantiate a server with a set of basic configuration attributes -- at least its transport endpoint, virtual host/origin settings (e.g. TLS configuration), etc.</li>
@@ -60,35 +60,39 @@
 <li>Be able to associate a set of "related/linked" resources to a registered URI to enable server push towards a willing client.</li>
 <li>Be able to unregister a previously registered URI.</li>
 <li>URI registration and de-registration can be requested on a running server without stopping it (make it a separate requirement).</li>
-</ol><h4>
-<a name="proxy" class="anchor" href="#proxy"><span class="octicon octicon-link"></span></a>Proxy</h4>
+</ol><h2>
+<a name="proxy" class="anchor" href="#proxy"><span class="octicon octicon-link"></span></a>Proxy</h2>
 
 <p>There is no proxy-specific functionality to be implemented as it is expected that the proxy is put together by the user by composing a Client, a Server, and a Cache.
 Anyway, these three components must be designed in a way that makes the proxy use case easy to implement.</p>
 
-<h4>
-<a name="profiling" class="anchor" href="#profiling"><span class="octicon octicon-link"></span></a>Profiling</h4>
+<h2>
+<a name="profiling" class="anchor" href="#profiling"><span class="octicon octicon-link"></span></a>Profiling</h2>
 
 <ol>
 <li>Be able to collect profiling information on well defined work-loads.</li>
 <li>Be able to process profiling data and produce visual information out of it (data format must be easy to extract and to feed into common -- \todo{define exactly which} -- visualisation tools).</li>
 <li>Be able to enable/disable code instrumentation at run-time or compile-time. </li>
-</ol><h4>
-<a name="testing" class="anchor" href="#testing"><span class="octicon octicon-link"></span></a>Testing</h4>
+</ol><h2>
+<a name="testing" class="anchor" href="#testing"><span class="octicon octicon-link"></span></a>Testing</h2>
 
 <ol>
 <li>Be able to test each produced software component in isolation.</li>
 <li>Be able to run regression tests easily.</li>
 <li>Be able to run performance tests on well defined work loads.</li>
-</ol><h4>
-<a name="performance" class="anchor" href="#performance"><span class="octicon octicon-link"></span></a>Performance</h4>
+</ol><h2>
+<a name="performance" class="anchor" href="#performance"><span class="octicon octicon-link"></span></a>Performance</h2>
 
 <ol>
 <li>Client/Server should be able to handle at least X parallel streams on a single connection.</li>
 <li>Client/Server should be able to achieve Y Gbps output on a single connection.</li>
 <li>Client/Server should be able to handle at least X connections in parallel.</li>
 <li>Client/Server should be able to achieve Z Gbps aggregate output.</li>
-</ol>
+</ol><h1>
+<a name="high-level-design" class="anchor" href="#high-level-design"><span class="octicon octicon-link"></span></a>High Level Design</h1>
+
+<h2>
+<a name="packages" class="anchor" href="#packages"><span class="octicon octicon-link"></span></a>Packages</h2>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/babongo">babongo</a></p>
