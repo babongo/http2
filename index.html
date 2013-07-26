@@ -29,36 +29,66 @@
       </header>
       <section>
         <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<h4>
+<a name="overall" class="anchor" href="#overall"><span class="octicon octicon-link"></span></a>Overall</h4>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<ol>
+<li>Be able to run usual HTTP transactions using HTTP/2.0 syntax.</li>
+<li>Be able to use HTTP/2.0 specific features (e.g. push, prioritisation, etc.).</li>
+<li>Be able to measure software performance/behaviour on well defined workloads.</li>
+<li>Be able to test the software base extensively and systematically (unit, regression, integration).</li>
+<li>Make it easy for new developers to understand the overall architecture and code structure, and be able to contribute as quickly and as effectively as possible.</li>
+<li>Make it easy for users of the software to plug their own implementations for non-core components (e.g. caching and discovery functionality).</li>
+</ol><h4>
+<a name="client" class="anchor" href="#client"><span class="octicon octicon-link"></span></a>Client</h4>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<ol>
+<li>Be able to negotiate a HTTP/2.0 connection with a server for both \ttt{http} and \ttt{https} URIs.</li>
+<li>Be able to discover HTTP/2.0 capabilities of a server through DNS or whatever mechanism is going to be defined (on-hold).</li>
+<li>Establish and run a successful connection according to spec.</li>
+<li>Handle connection errors according to spec.</li>
+<li>Be able to re-use previously retrieved resources for new requests (cache).</li>
+</ol><h4>
+<a name="server" class="anchor" href="#server"><span class="octicon octicon-link"></span></a>Server</h4>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<ol>
+<li>Be able to instantiate a server with a set of basic configuration attributes -- at least its transport endpoint, virtual host/origin settings (e.g. TLS configuration), etc.</li>
+<li>Be able to register a URI for a configured origin, and associate a static data source.</li>
+<li>Be able to register a URI for a configured origin, and associate a dynamic data source.</li>
+<li>Be able to associate a set of "related/linked" resources to a registered URI to enable server push towards a willing client.</li>
+<li>Be able to unregister a previously registered URI.</li>
+<li>URI registration and de-registration can be requested on a running server without stopping it (make it a separate requirement).</li>
+</ol><h4>
+<a name="proxy" class="anchor" href="#proxy"><span class="octicon octicon-link"></span></a>Proxy</h4>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>There is no proxy-specific functionality to be implemented as it is expected that the proxy is put together by the user by composing a Client, a Server, and a Cache.
+Anyway, these three components must be designed in a way that makes the proxy use case easy to implement.</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<h4>
+<a name="profiling" class="anchor" href="#profiling"><span class="octicon octicon-link"></span></a>Profiling</h4>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<ol>
+<li>Be able to collect profiling information on well defined work-loads.</li>
+<li>Be able to process profiling data and produce visual information out of it (data format must be easy to extract and to feed into common -- \todo{define exactly which} -- visualisation tools).</li>
+<li>Be able to enable/disable code instrumentation at run-time or compile-time. </li>
+</ol><h4>
+<a name="testing" class="anchor" href="#testing"><span class="octicon octicon-link"></span></a>Testing</h4>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<ol>
+<li>Be able to test each produced software component in isolation.</li>
+<li>Be able to run regression tests easily.</li>
+<li>Be able to run performance tests on well defined work loads.</li>
+</ol><h4>
+<a name="performance" class="anchor" href="#performance"><span class="octicon octicon-link"></span></a>Performance</h4>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<ol>
+<li>Client/Server should be able to handle at least X parallel streams on a single connection.</li>
+<li>Client/Server should be able to achieve Y Gbps output on a single connection.</li>
+<li>Client/Server should be able to handle at least X connections in parallel.</li>
+<li>Client/Server should be able to achieve Z Gbps aggregate output.</li>
+</ol>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/babongo">babongo</a></p>
